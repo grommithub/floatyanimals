@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AirScript : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class AirScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myAir -= Time.deltaTime * 5;
+        if(WinTriggerScript.myWin != true)
+        {
+            myAir -= Time.deltaTime * 5;
+        }
 
         if (myAir <= 0)
         {
@@ -26,5 +30,6 @@ public class AirScript : MonoBehaviour
     void DestroyPlayer()
     {
         gameObject.SetActive(false);
+        SceneManager.LoadScene(2);
     }
 }
